@@ -1,0 +1,35 @@
+<!-- <mat-progress-bar *ngIf="isBusy" mode="indeterminate"></mat-progress-bar> -->
+<div class="header">
+  <!-- exemplo de input -->
+  <app-titulo [titulo]="titulo"></app-titulo>
+</div>
+<div class="body table-responsive">
+  <table class="table table-bordered table-striped table-hover" style="width: 100%;">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Disciplina</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="listaProfessores?.length != 0">
+      <tr *ngFor="let model of listaProfessores">
+        <td>
+          {{model.id}}
+        </td>
+        <td>
+          {{model.text}}
+        </td>
+        <td>
+          {{model.discp}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="fixed-action-btn">
+  <!-- <button [disabled]="!isAllowed('Create')" mat-fab color="primary" (click)="create()" matTooltip="Adicionar (F9)"
+      matTooltipPosition="above">
+      <mat-icon>add</mat-icon>
+    </button> -->
+</div>

@@ -1,0 +1,52 @@
+<div class="card main-content">
+  <!-- <mat-progress-bar *ngIf="isBusy" mode="indeterminate"></mat-progress-bar> -->
+  <div class="header">
+    <!-- EXEMPLO DE @INPUT -->
+    <app-titulo [titulo]="'Alunos'"></app-titulo>
+  </div>
+
+
+  <div *ngIf="alunoSelecionado">
+    Aluno selecionado: {{alunoSelecionado}}
+    <br>
+    <button class="btn btn-default" (click)="voltar()">Voltar</button>
+  </div>
+  <div *ngIf="!alunoSelecionado">
+    Nenhum Selecionado
+  </div>
+
+  <div class="body table-responsive">
+    <table class="table table-bordered table-striped table-hover" style="width: 100%;">
+      <thead>
+        <tr>
+          <th class="text-center">Id</th>
+          <th class="text-center">Nome</th>
+          <th class="text-center">Sobrenome</th>
+          <th class="text-center">Telefone</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="alunos?.length != 0" >
+        <tr *ngFor="let model of alunos" style="cursor: pointer;"  (click)="alunoSelect(model)">
+          <th scope="row" class="text-center">
+            {{model.id}}
+          </th>
+          <td class="text-center">
+            {{model.text}}
+          </td>
+          <td class="text-center">
+            {{model.sobrenome}}
+          </td>
+          <td class="text-center">
+            {{model.telefone}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fixed-action-btn">
+    <!-- <button [disabled]="!isAllowed('Create')" mat-fab color="primary" (click)="create()" matTooltip="Adicionar (F9)"
+      matTooltipPosition="above">
+      <mat-icon>add</mat-icon>
+    </button> -->
+  </div>
+</div>
