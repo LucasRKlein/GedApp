@@ -1,0 +1,53 @@
+<!-- EXEMPLO, PARTE DE CADASTRO -->
+<div *ngIf="tipoDocumentoSelecionado">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="me-auto">
+        <app-titulo [titulo]="'Tipo Documento: ' + tipoDocumentoSelecionado"></app-titulo>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="mt-2">
+        <button class="btn btn-warning" (click)="voltar()">Lista de Documentos</button>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="formGroupExampleInput">N° Documento</label>
+      <input type="text" class="form-control">
+    </div>
+
+    <br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Tipo Documento</label>
+      <input type="text" class="form-control" placeholder="Orçamento">
+    </div>
+
+  </form>
+</div>
+
+<div *ngIf="!tipoDocumentoSelecionado">
+  <app-titulo [titulo]="'Tipos Documentos'"></app-titulo>
+  <div class="body table-responsive">
+    <table class="table table-bordered table-striped table-hover" style="width: 100%;">
+      <thead>
+        <tr>
+          <th class="text-center" width="50">N° Documento</th>
+          <th class="text-center" width="150">Text</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="listaDocs?.length != 0">
+        <tr *ngFor="let model of listaDocs" style="cursor: pointer;" (click)="tipoDocumentoSelect(model)">
+          <td class="text-center">
+            {{model.numero}}
+          </td>
+          <td>
+            {{model.text}}
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

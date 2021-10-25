@@ -16,9 +16,20 @@ export class ProfessoresComponent implements OnInit {
     {id: '4', text: 'Fernando', discp: 'Inglês'},
   ]
 
+  public professorSelecionado: string;
+
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  professorSelect(professor: any) {
+    this.professorSelecionado = professor.text;
+  }
+
+  voltar() {
+    this.professorSelecionado = '';
   }
 
 }

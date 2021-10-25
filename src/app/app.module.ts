@@ -12,9 +12,11 @@ import { ProfessoresComponent } from './professores/professores.component';
 import { TituloComponent } from './titulo/titulo.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.component';
+import { ContatosComponent } from './contatos/contatos.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     AlunosComponent,
     ProfessoresComponent,
@@ -22,8 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardComponent,
     DocumentosComponent,
     NavComponent,
-    TituloComponent
-  ],
+    TituloComponent,
+      TipoDocumentoComponent,
+      ContatosComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
