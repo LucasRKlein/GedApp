@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-11">
       <div class="me-auto">
-        <app-titulo [titulo]="'Aluno: ' + alunoSelecionado"></app-titulo>
+        <app-titulo [titulo]="'Usuário: ' + alunoSelecionado"></app-titulo>
       </div>
     </div>
     <div class="col-md-1">
@@ -29,7 +29,7 @@
 </div>
 
 <div *ngIf="!alunoSelecionado">
-  <app-titulo [titulo]="'Alunos'"></app-titulo>
+  <app-titulo [titulo]="'Usuários'"></app-titulo>
   <div class="body table-responsive">
     <table class="table table-bordered table-striped table-hover" style="width: 100%;">
       <thead>
