@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'professores', component: ProfessoresComponent },
-  { path: 'alunos', component: AlunosComponent },
+  { path: 'usuarios', component: AlunosComponent },
   { path: 'documentos', component: DocumentosComponent },
   { path: 'tiposDocumentos', component: TipoDocumentoComponent },
   { path: 'contatos', component: ContatosComponent },
