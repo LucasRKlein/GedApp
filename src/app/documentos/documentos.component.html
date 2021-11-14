@@ -6,61 +6,71 @@
 
 
 <!-- EXEMPLO, PARTE DE CADASTRO -->
-<div *ngIf="documentoSelecionado">
-  <div class="row">
-    <div class="col-md-10">
-      <div class="me-auto">
-        <app-titulo [titulo]="'Documento: ' + documentoSelecionado"></app-titulo>
-      </div>
+<div *ngIf="documentoSelecionado || criandoDocumento">
+  <div class="d-flex justify-content-between align-items-center my-4">
+    <div *ngIf="documentoSelecionado" class="me-auto my-4">
+      <app-titulo [titulo]="'Documento: ' + documentoSelecionado.descr"></app-titulo>
     </div>
-    <div class="col-md-2">
-      <div class="mt-2">
-        <button class="btn btn-warning" (click)="voltar()">Lista de Documentos</button>
-      </div>
-    </div>
+   <div *ngIf="criandoDocumento" >
+     <h2>Incluindo Documento</h2>
+   </div>
+   <div class="d-flex justify-content-end">
+     <button class="btn btn-warning" (click)="voltar()">Lista de Usuarios</button>
+   </div>
   </div>
 
   <form>
-    <div class="form-group">
-      <label for="formGroupExampleInput">N° Documento</label>
-      <input type="text" class="form-control">
+    <div class="row my-4">
+      <div class="form-group col-9">
+        <label for="formGroupExampleInput">N° Documento</label>
+        <input type="text" value={{documentoSelecionado.numero}} class="form-control">
+      </div>
+      <div class="form-group col-3">
+        <label for="inputState">Tipo Documento</label>
+        <select class="form-control" value={{documentoSelecionado.tipo}}>
+          <option *ngFor="let tipo of listaTipos" >{{tipo.text}}</option>
+        </select>
+      </div>   
     </div>
-
-    <br>
     <!-- <div class="form-group">
       <label for="formGroupExampleInput2">Tipo Documento</label>
       <input type="text" class="form-control" placeholder="Orçamento">
     </div> -->
-
-
-    <div class="form-group col-md-4">
-      <label for="inputState">Tipo Documento</label>
-      <select class="form-control">
-        <option *ngFor="let tipo of listaTipos" >{{tipo.text}}</option>
-      </select>
-    </div>   
-
-
-    <br>
-    <div class="form-group">
+    <div class="form-group my-4">
       <label for="formGroupExampleInput2">Descrição</label>
-      <input type="text" class="form-control" placeholder="Boleto Lojas Adelaide">
+      <input type="text" class="form-control" value={{documentoSelecionado.descr}} placeholder="Boleto Lojas Adelaide">
     </div>
-
-    <br>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Data Emissão</label>
-      <input type="text" class="form-control" placeholder="10/10/2010">
+    <div class="row my-4">
+      <div class="form-group col-4">
+        <label for="formGroupExampleInput2">Data Emissão</label>
+        <input type="text" class="form-control" value={{documentoSelecionado.dataEmissao}}  placeholder="10/10/2010">
+      </div>
+      <div class="form-group col-4">
+        <label for="formGroupExampleInput2">Data Vencimento</label>
+        <input type="text" class="form-control" value={{documentoSelecionado.dataVencto}}  placeholder="10/10/2010">
+      </div>
+      <div class="form-group col-4">
+        <label for="formGroupExampleInput2">Data de Notificação</label>
+        <input type="text" class="form-control" value={{documentoSelecionado.dataNoficacao}}  placeholder="10/10/2010">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Data Vencimento</label>
-      <input type="text" class="form-control" placeholder="10/10/2010">
+    <div class="d-flex justify-content-between">
+      <div>
+        <input type="file" name="documento">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-success mx-2">Salvar</button>
+        <button *ngIf="!criandoDocumento" type="submit" class="btn btn-danger  ml-2 mr-0">Excluir</button>
+      </div>
     </div>
   </form>
 </div>
 
-<div *ngIf="!documentoSelecionado">
-  <app-titulo [titulo]="'Documentos'"></app-titulo>
+<div *ngIf="!documentoSelecionado && !criandoDocumento">
+  <div class="d-flex justify-content-between align-items-center my-4">
+    <app-titulo [titulo]="'Documentos'"></app-titulo>
+    <button class="btn btn-primary" (click)="criaDocumento()">Incluir</button>
+  </div>
   <div class="body table-responsive">
     <table class="table table-bordered table-striped table-hover" style="width: 100%;">
       <thead>
@@ -70,6 +80,7 @@
           <th class="text-center" width="200">Descrição</th>
           <th class="text-center" width="150">Data Emissão</th>
           <th class="text-center" width="150">Data Vencimento</th>
+          <th class="text-center" width="150">Data Notificação</th>
         </tr>
       </thead>
       <tbody *ngIf="listaDocs?.length != 0">
@@ -88,6 +99,9 @@
           </td>
           <td class="text-center">
             {{model.dataVencto}}
+          </td>
+          <td class="text-center">
+            {{model.dataNoficacao}}
           </td>
         </tr>
       </tbody>

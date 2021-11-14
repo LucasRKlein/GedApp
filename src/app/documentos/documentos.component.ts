@@ -9,14 +9,14 @@ export class DocumentosComponent implements OnInit {
 
   titulo = 'Documentos'
 
-  public documentoSelecionado: string;
-
+  public documentoSelecionado: any;
+  public criandoDocumento: boolean;
 
   listaDocs = [
-    {numero: '1', descr: 'Boleto Kabum', tipo: 'Boleto', dataEmissao: '20/01/2019', dataVencto: '30/02/2020'},
-    {numero: '2', descr: 'Orçamento Venda casa verde', tipo: 'Orçamento', dataEmissao: '10/03/2020', dataVencto: '22/07/2021'},
-    {numero: '3', descr: 'Doc Teste 1', tipo: 'Teste', dataEmissao: '24/07/2021', dataVencto: '12/08/2021'},
-    {numero: '4', descr: 'Doc Teste 2', tipo: 'Teste', dataEmissao: '07/12/2018', dataVencto: '15/10/2020'},
+    {numero: '1', descr: 'Boleto Kabum', tipo: 'Boleto', dataEmissao: '20/01/2019', dataVencto: '30/02/2020', dataNoficacao: '30/02/2020'},
+    {numero: '2', descr: 'Orçamento Venda casa verde', tipo: 'Orçamento', dataEmissao: '10/03/2020', dataVencto: '22/07/2021', dataNoficacao: '30/02/2020'},
+    {numero: '3', descr: 'Doc Teste 1', tipo: 'Teste', dataEmissao: '24/07/2021', dataVencto: '12/08/2021', dataNoficacao: '30/02/2020'},
+    {numero: '4', descr: 'Doc Teste 2', tipo: 'Teste', dataEmissao: '07/12/2018', dataVencto: '15/10/2020', dataNoficacao: '30/02/2020'},
   ]
 
   listaTipos = [
@@ -31,11 +31,20 @@ export class DocumentosComponent implements OnInit {
   }
 
   documentoSelect(documento: any) {
-    this.documentoSelecionado = documento.descr;
+    this.documentoSelecionado = documento;
+  }
+
+  criaDocumento(){
+    this.criandoDocumento = true;
   }
 
   voltar() {
-    this.documentoSelecionado = '';
+    if(this.documentoSelecionado){
+      this.documentoSelecionado = null;
+    }
+    if(this.criandoDocumento){
+      this.criandoDocumento = false;
+    }
   }
 
 }

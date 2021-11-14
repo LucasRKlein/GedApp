@@ -1,0 +1,106 @@
+<div *ngIf="usuarioSelecionado || criandoUsuario">
+  <div class="d-flex justify-content-between align-items-center my-4">
+    <div *ngIf="usuarioSelecionado" class="me-auto my-4">
+       <app-titulo [titulo]="'Usuário: ' + usuarioSelecionado.nome"></app-titulo>
+     </div>
+    <div *ngIf="criandoUsuario" class="m-auto">
+      <h2>Incluindo Usuários</h2>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-warning" (click)="voltar()">Lista de Usuarios</button>
+    </div>
+  </div>
+
+  <form>
+    <div class="col-12 row mx-0 my-4 ">
+      <div class="p-0 d-flex align-items-center justify-content-between">
+        <div class="form-group col-7 p-0">
+          <label for="formGroupExampleInput">Nome</label>
+          <input type="text" value={{usuarioSelecionado.nome}} class="form-control" placeholder="Ex: João">
+        </div>
+        <div class="form-group col-4 p-0">
+          <label for="formGroupExampleInput2">Nivel de acesso</label>
+          <select name="nivel_de_acesso"  value={{usuarioSelecionado.nivel_de_acesso}} class="form-control">
+            <option value="0">
+              normal
+            </option>
+            <option value="1">
+              admnistrador
+            </option>
+
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="formGroupExampleInput2">Sobrenome</label>
+      <input type="text" value={{usuarioSelecionado.sobrenome}} class="form-control" placeholder="da Silva">
+    </div>
+    <div class="form-group my-4">
+      <label for="formGroupExampleInput2">Login</label>
+      <input type="text"  value={{usuarioSelecionado.login}} class="form-control" placeholder="usuario.teste">
+    </div>
+    <div class="form-group my-4">
+      <label for="formGroupExampleInput2">Senha</label>
+      <input type="password"  value={{usuarioSelecionado.senha}} class="form-control" placeholder="******">
+    </div>
+    <div class="form-group my-4">
+      <label for="formGroupExampleInput2">Telefone</label>
+      <input type="text"  value={{usuarioSelecionado.telefone}} class="form-control" placeholder=" (48) 98888-8888">
+    </div>
+
+    <div class="form-group my-4">
+      <label for="formGroupExampleInput2">Documento</label>
+      <input type="text"  value={{usuarioSelecionado.documento}} class="form-control" placeholder="000.000.000-00">
+    </div>
+
+    
+
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-success mx-2">Salvar</button>
+      <button *ngIf="!criandoUsuario" type="submit" class="btn btn-danger  ml-2 mr-0">Excluir</button>
+
+    </div>
+  </form>
+</div>
+
+<div *ngIf="!usuarioSelecionado && !criandoUsuario">
+  <div class="d-flex justify-content-between align-items-center my-4">
+    <app-titulo [titulo]="'Usuários'"></app-titulo>
+    <button class="btn btn-primary" (click)="criaUsuario()">Incluir</button>
+  </div>
+
+
+  <div class="body table-ersponsive">
+    <table class="table table-bordered table-striped table-hover mt-4" style="width: 100%;">
+      <thead>
+        <tr>
+          <th class="text-center">Id</th>
+          <th class="text-center">Nome</th>
+          <th class="text-center">Sobrenome</th>
+          <th class="text-center">Telefone</th>
+          <th class="text-center">Documento</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="usuarios?.length != 0">
+        <tr *ngFor="let model of usuarios" style="cursor: pointer;" (click)="usuarioSelect(model)">
+          <td scope="row" class="text-center">
+            {{model.id}}
+          </td>
+          <td class="text-center">
+            {{model.nome}}
+          </td>
+          <td class="text-center">
+            {{model.sobrenome}}
+          </td>
+          <td class="text-center">
+            {{model.telefone}}
+          </td>
+          <td class="text-center">
+            {{model.documento}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

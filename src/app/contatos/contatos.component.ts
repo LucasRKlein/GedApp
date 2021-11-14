@@ -16,8 +16,8 @@ export class ContatosComponent implements OnInit {
     {id: '4', text: 'Fernando', email: 'fermandodasilva@hotmail.com'},
   ]
 
-  public contatoSelecionado: string;
-
+  public contatoSelecionado: any;
+  public criandoContato: boolean;
 
   constructor() { }
 
@@ -25,11 +25,17 @@ export class ContatosComponent implements OnInit {
   }
 
   contatoSelect(contato: any) {
-    this.contatoSelecionado = contato.text;
+    this.contatoSelecionado = contato;
+  }
+
+  criaContato(){
+    this.criandoContato = true;
   }
 
   voltar() {
-    this.contatoSelecionado = '';
+    this.contatoSelecionado = null;
+    this.criandoContato = false;
+
   }
 
 }

@@ -8,8 +8,8 @@ export class TipoDocumentoComponent implements OnInit {
 
   titulo = 'Documentos'
 
-  public tipoDocumentoSelecionado: string;
-
+  public tipoDocumentoSelecionado: any;
+  public criandoTipoDocumento: boolean;
 
   listaDocs = [
     {numero: '1', text: 'Boleto'},
@@ -23,11 +23,16 @@ export class TipoDocumentoComponent implements OnInit {
   }
 
   tipoDocumentoSelect(tipoDocumento: any) {
-    this.tipoDocumentoSelecionado = tipoDocumento.text;
+    this.tipoDocumentoSelecionado = tipoDocumento;
+  }
+
+  criaTipoDocumento(){
+    this.criandoTipoDocumento = true;
   }
 
   voltar() {
-    this.tipoDocumentoSelecionado = '';
+    this.tipoDocumentoSelecionado = null;
+    this.criandoTipoDocumento = false;
   }
 
 }
