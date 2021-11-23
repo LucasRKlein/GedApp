@@ -20,7 +20,7 @@
         </div>
         <div class="form-group col-4 p-0">
           <label for="formGroupExampleInput2">Nivel de acesso</label>
-          <select name="nivel_de_acesso"  value={{usuarioSelecionado.nivel_de_acesso}} class="form-control">
+          <select name="nivel_de_acesso"  value={{usuarioSelecionado.nivelAcesso}} class="form-control">
             <option value="0">
               normal
             </option>
@@ -50,8 +50,8 @@
     </div>
 
     <div class="form-group my-4">
-      <label for="formGroupExampleInput2">Documento</label>
-      <input type="text"  value={{usuarioSelecionado.documento}} class="form-control" placeholder="000.000.000-00">
+      <label for="formGroupExampleInput2">CPF</label>
+      <input type="text"  value={{usuarioSelecionado.cpf}} class="form-control" placeholder="000.000.000-00">
     </div>
 
     
@@ -79,7 +79,7 @@
           <th class="text-center">Nome</th>
           <th class="text-center">Sobrenome</th>
           <th class="text-center">Telefone</th>
-          <th class="text-center">Documento</th>
+          <th class="text-center">CPF</th>
         </tr>
       </thead>
       <tbody *ngIf="usuarios?.length != 0">
@@ -97,7 +97,7 @@
             {{model.telefone}}
           </td>
           <td class="text-center">
-            {{model.documento}}
+            {{model.cpf}}
           </td>
         </tr>
       </tbody>

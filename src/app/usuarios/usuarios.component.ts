@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioModel } from '../models/usuario';
 
 
 
@@ -22,19 +23,19 @@ export class UsuariosComponent implements OnInit {
 
   titulo = 'Aluno';
 
-  public usuarioSelecionado: usuario;
+  public usuarioSelecionado: UsuarioModel;
   public criandoUsuario: boolean;
 
-  public usuarios: usuario[] = [
-    {id: '1', nome: 'Marta', sobrenome: 'machado', telefone: '99999-9999', documento: "00000000000", login: 'teste', senha: '123456', nivel_de_acesso: 1  },
-    {id: '2', nome: 'João', sobrenome: 'machado', telefone: '99999-9999', documento: "00000000000" , login: 'teste', senha: '123456' , nivel_de_acesso: 0  },
-    {id: '3', nome: 'Pedro', sobrenome: 'machado', telefone: '99999-9999', documento: "00000000000" , login: 'teste', senha: '123456', nivel_de_acesso:  0  },
-    {id: '4', nome: 'Mauro', sobrenome: 'machado', telefone: '99999-9999' , documento: "00000000000", login: 'teste', senha: '123456' , nivel_de_acesso: 0  },
-    {id: '5', nome: 'Jarbas', sobrenome: 'machado', telefone: '99999-9999' , documento: "00000000000", login: 'teste', senha: '123456' , nivel_de_acesso: 0  },
-    {id: '6', nome: 'Leticia', sobrenome: 'machado', telefone: '99999-9999', documento: "00000000000" , login: 'teste', senha: '123456', nivel_de_acesso:  0  },    
+  public usuarios: UsuarioModel[] = [
+    {id: 1, nome: 'Marta', sobrenome: 'machado', telefone: 99999-9999, cpf: '00000000000', login: 'teste', senha: '123456', nivelAcesso: 1  },
+    {id: 2, nome: 'João', sobrenome: 'machado', telefone: 99999-9999, cpf: '00000000000' , login: 'teste', senha: '123456' , nivelAcesso: 0  },
+    {id: 3, nome: 'Pedro', sobrenome: 'machado', telefone: 99999-9999, cpf: '00000000000' , login: 'teste', senha: '123456', nivelAcesso:  0  },
+    {id: 4, nome: 'Mauro', sobrenome: 'machado', telefone: 99999-9999 , cpf: '00000000000', login: 'teste', senha: '123456' , nivelAcesso: 0  },
+    {id: 5, nome: 'Jarbas', sobrenome: 'machado', telefone: 99999-9999 , cpf: '00000000000', login: 'teste', senha: '123456' , nivelAcesso: 0  },
+    {id: 6, nome: 'Leticia', sobrenome: 'machado', telefone: 99999-9999, cpf: '00000000000' , login: 'teste', senha: '123456', nivelAcesso:  0  },    
   ]
 
-  usuarioSelect(usuario: usuario) {
+  usuarioSelect(usuario: UsuarioModel) {
     this.usuarioSelecionado = usuario;
   }
 

@@ -9,7 +9,7 @@
 <div *ngIf="documentoSelecionado || criandoDocumento">
   <div class="d-flex justify-content-between align-items-center my-4">
     <div *ngIf="documentoSelecionado" class="me-auto my-4">
-      <app-titulo [titulo]="'Documento: ' + documentoSelecionado.descr"></app-titulo>
+      <app-titulo [titulo]="'Documento: ' + documentoSelecionado.descricao"></app-titulo>
     </div>
    <div *ngIf="criandoDocumento" >
      <h2>Incluindo Documento</h2>
@@ -23,12 +23,12 @@
     <div class="row my-4">
       <div class="form-group col-9">
         <label for="formGroupExampleInput">N° Documento</label>
-        <input type="text" value={{documentoSelecionado.numero}} class="form-control">
+        <input type="text" value={{documentoSelecionado.id}} class="form-control">
       </div>
       <div class="form-group col-3">
         <label for="inputState">Tipo Documento</label>
-        <select class="form-control" value={{documentoSelecionado.tipo}}>
-          <option *ngFor="let tipo of listaTipos" >{{tipo.text}}</option>
+        <select class="form-control" value={{documentoSelecionado.tipoId}}>
+          <option *ngFor="let tipo of listaTipos" >{{tipo.nome}}</option>
         </select>
       </div>   
     </div>
@@ -38,20 +38,20 @@
     </div> -->
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Descrição</label>
-      <input type="text" class="form-control" value={{documentoSelecionado.descr}} placeholder="Boleto Lojas Adelaide">
+      <input type="text" class="form-control" value={{documentoSelecionado.descricao}} placeholder="Boleto Lojas Adelaide">
     </div>
     <div class="row my-4">
       <div class="form-group col-4">
         <label for="formGroupExampleInput2">Data Emissão</label>
-        <input type="text" class="form-control" value={{documentoSelecionado.dataEmissao}}  placeholder="10/10/2010">
+        <input type="date" class="form-control" value={{dataEmissaoSelecionada}}  placeholder="10/10/2010">
       </div>
       <div class="form-group col-4">
         <label for="formGroupExampleInput2">Data Vencimento</label>
-        <input type="text" class="form-control" value={{documentoSelecionado.dataVencto}}  placeholder="10/10/2010">
+        <input type="date" class="form-control" value={{dataVenctoSelecionada}}  placeholder="10/10/2010">
       </div>
       <div class="form-group col-4">
         <label for="formGroupExampleInput2">Data de Notificação</label>
-        <input type="text" class="form-control" value={{documentoSelecionado.dataNoficacao}}  placeholder="10/10/2010">
+        <input type="date" class="form-control" value={{dataNotificacaoSelecionada}}  placeholder="10/10/2010">
       </div>
     </div>
     <div class="d-flex justify-content-between">
@@ -75,7 +75,7 @@
     <table class="table table-bordered table-striped table-hover" style="width: 100%;">
       <thead>
         <tr>
-          <th class="text-center" width="50">N° Documento</th>
+          <th class="text-center" width="50">Id</th>
           <th class="text-center" width="150">Tipo</th>
           <th class="text-center" width="200">Descrição</th>
           <th class="text-center" width="150">Data Emissão</th>
@@ -86,22 +86,22 @@
       <tbody *ngIf="listaDocs?.length != 0">
         <tr *ngFor="let model of listaDocs" style="cursor: pointer;" (click)="documentoSelect(model)">
           <td class="text-center">
-            {{model.numero}}
+            {{model.id}}
           </td>
           <td>
-            {{model.tipo}}
+            {{getDocumentoTipoNome(model.tipoId)}}
           </td>
           <td>
-            {{model.descr}}
+            {{model.descricao}}
           </td>
           <td class="text-center">
-            {{model.dataEmissao}}
+            {{model.dataEmissao | date:'dd/MM/yyyy'}}
           </td>
           <td class="text-center">
-            {{model.dataVencto}}
+            {{model.dataVencto | date:'dd/MM/yyyy'}}
           </td>
           <td class="text-center">
-            {{model.dataNoficacao}}
+            {{model.dataNotificacao | date:'dd/MM/yyyy'}}
           </td>
         </tr>
       </tbody>

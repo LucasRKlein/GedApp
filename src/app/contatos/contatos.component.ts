@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContatoModel } from '../models/contato';
 
 @Component({
   selector: 'app-contatos',
@@ -24,7 +25,7 @@ export class ContatosComponent implements OnInit {
   ngOnInit() {
   }
 
-  contatoSelect(contato: any) {
+  contatoSelect(contato: ContatoModel) {
     this.contatoSelecionado = contato;
   }
 
