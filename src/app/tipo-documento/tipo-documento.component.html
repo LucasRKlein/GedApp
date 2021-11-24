@@ -2,7 +2,7 @@
 <div *ngIf="tipoDocumentoSelecionado || criandoTipoDocumento">
   <div class="d-flex justify-content-between align-items-center my-4">
     <div *ngIf="tipoDocumentoSelecionado" class="me-auto my-4">
-       <app-titulo [titulo]="'Tipo de documento: ' + tipoDocumentoSelecionado.text"></app-titulo>
+       <app-titulo [titulo]="'Tipo de documento: ' + tipoDocumentoSelecionado.nome"></app-titulo>
      </div>
     <div *ngIf="criandoTipoDocumento">
       <h2>Incluindo Usuários</h2>
@@ -12,15 +12,15 @@
     </div>
   </div>
 
-  <form>
+  <form [formGroup]="form" (submit)="modelSubmit()">
     <div class="row">
-      <div class="form-group col-9">
-        <label for="formGroupExampleInput">N° Documento</label>
-        <input type="text" value={{tipoDocumentoSelecionado.numero}} class="form-control">
-      </div>
       <div class="form-group col-3">
-        <label for="formGroupExampleInput2">Tipo Documento</label>
-        <input type="text" value={{tipoDocumentoSelecionado.text}} class="form-control" placeholder="Orçamento">
+        <label for="formGroupExampleInput">N° Documento</label>
+        <input type="nome" value={{tipoDocumentoSelecionado.id}} class="form-control">
+      </div>
+      <div class="form-group col-9">
+        <label for="formGroupExampleInput2">Nome</label>
+        <input type="nome" value={{tipoDocumentoSelecionado.nome}} class="form-control" placeholder="Orçamento">
       </div>
     </div>
 
@@ -40,17 +40,17 @@
     <table class="table table-bordered table-striped table-hover" style="width: 100%;">
       <thead>
         <tr>
-          <th class="text-center" width="50">N° Documento</th>
-          <th class="text-center" width="150">Descrição</th>
+          <th class="nome-center" width="50">N° Documento</th>
+          <th class="nome-center" width="150">Nome</th>
         </tr>
       </thead>
       <tbody *ngIf="listaDocs?.length != 0">
         <tr *ngFor="let model of listaDocs" style="cursor: pointer;" (click)="tipoDocumentoSelect(model)">
-          <td class="text-center">
-            {{model.numero}}
+          <td class="nome-center">
+            {{model.id}}
           </td>
           <td>
-            {{model.text}}
+            {{model.nome}}
           </td>          
         </tr>
       </tbody>

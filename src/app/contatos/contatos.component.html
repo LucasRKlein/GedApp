@@ -2,7 +2,7 @@
 <div *ngIf="contatoSelecionado || criandoContato">
   <div class="d-flex justify-content-between align-items-center my-4">
     <div *ngIf="contatoSelecionado" class="me-auto my-4">
-       <app-titulo [titulo]="'Contato: ' + contatoSelecionado.text"></app-titulo>
+       <app-titulo [titulo]="'Contato: ' + contatoSelecionado.nome"></app-titulo>
      </div>
     <div *ngIf="criandoContato" >
       <h2>Incluindo Contato</h2>
@@ -12,17 +12,17 @@
     </div>
   </div>
 
-  <form>
+  <form [formGroup]="form" (submit)="modelSubmit()">
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Nome</label>
-      <input type="text" class="form-control" value={{contatoSelecionado.text}}  placeholder="João da Silva">
+      <input type="text" class="form-control" formControlName="nome"  placeholder="João da Silva" required>
     </div>
     <div class="form-group my-4" >
       <label for="formGroupExampleInput2">Email</label>
-      <input type="text" class="form-control" value={{contatoSelecionado.email}}  placeholder="ex: joaodasilva@uol.com.br">
+      <input type="text" class="form-control" formControlName="email"  placeholder="ex: joaodasilva@uol.com.br" required>
     </div>
     <div class="d-flex justify-content-end my-4">
-      <button type="submit" class="btn btn-success mx-2">Salvar</button>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-success mx-2">Salvar</button>
       <button *ngIf="!criandoContato" type="submit" class="btn btn-danger  ml-2 mr-0">Excluir</button>
     </div>
   </form>
@@ -50,7 +50,7 @@
             {{model.id}}
           </td>
           <td>
-            {{model.text}}
+            {{model.nome}}
           </td>
           <td>
             {{model.email}}

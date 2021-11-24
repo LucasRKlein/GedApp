@@ -13,24 +13,27 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.component';
 import { ContatosComponent } from './contatos/contatos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     UsuariosComponent,
     PerfilComponent,
-    //DashboardComponent,
+
     DocumentosComponent,
     NavComponent,
     TituloComponent,
-      TipoDocumentoComponent,
-      ContatosComponent
-   ],
+    TipoDocumentoComponent,
+    ContatosComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

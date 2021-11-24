@@ -11,50 +11,47 @@
     </div>
   </div>
 
-  <form>
+  <form [formGroup]="form" (submit)="modelSubmit()">
     <div class="col-12 row mx-0 my-4 ">
       <div class="p-0 d-flex align-items-center justify-content-between">
         <div class="form-group col-7 p-0">
           <label for="formGroupExampleInput">Nome</label>
-          <input type="text" value={{usuarioSelecionado.nome}} class="form-control" placeholder="Ex: João">
+          <input type="text" formControlName="nome" class="form-control" placeholder="Ex: João">
         </div>
         <div class="form-group col-4 p-0">
           <label for="formGroupExampleInput2">Nivel de acesso</label>
-          <select name="nivel_de_acesso"  value={{usuarioSelecionado.nivelAcesso}} class="form-control">
+          <select name="nivel_de_acesso"  formControlName="nivelAcesso" class="form-control">
             <option value="0">
               normal
             </option>
             <option value="1">
               admnistrador
             </option>
-
           </select>
         </div>
       </div>
     </div>
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Sobrenome</label>
-      <input type="text" value={{usuarioSelecionado.sobrenome}} class="form-control" placeholder="da Silva">
+      <input type="text" formControlName="sobrenome" class="form-control" placeholder="da Silva">
     </div>
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Login</label>
-      <input type="text"  value={{usuarioSelecionado.login}} class="form-control" placeholder="usuario.teste">
+      <input type="text"  formControlName="login" class="form-control" placeholder="usuario.teste">
     </div>
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Senha</label>
-      <input type="password"  value={{usuarioSelecionado.senha}} class="form-control" placeholder="******">
+      <input type="password"  formControlName="senha" class="form-control" placeholder="******">
     </div>
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">Telefone</label>
-      <input type="text"  value={{usuarioSelecionado.telefone}} class="form-control" placeholder=" (48) 98888-8888">
+      <input type="text"  formControlName="telefone" class="form-control" placeholder=" (48) 98888-8888">
     </div>
 
     <div class="form-group my-4">
       <label for="formGroupExampleInput2">CPF</label>
-      <input type="text"  value={{usuarioSelecionado.cpf}} class="form-control" placeholder="000.000.000-00">
-    </div>
-
-    
+      <input type="text"  formControlName="cpf" class="form-control" placeholder="000.000.000-00">
+    </div>    
 
     <div class="d-flex justify-content-end">
       <button type="submit" class="btn btn-success mx-2">Salvar</button>
